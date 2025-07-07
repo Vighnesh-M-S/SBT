@@ -8,7 +8,12 @@ int main() {
 
     while (true) {
         auto price = manager.getPrice("usdc");
-        std::cout << "USDC: $" << price.price << " @ " << price.timestamp << "\n";
+        if (price.timestamp != 0) {
+            std::cout << "USDC: $" << price.price << " @ " << price.timestamp << "\n";
+        } else {
+            std::cout << "Waiting for valid price...\n";
+        }
+
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 }
