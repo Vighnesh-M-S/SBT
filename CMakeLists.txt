@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(StablecoinTracker)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_BUILD_TYPE Debug)
+
 
 include_directories(/opt/homebrew/include)
 link_directories(/opt/homebrew/lib)
@@ -14,6 +16,10 @@ add_executable(stablecoin_tracker
     src/PriceFeedManager.cpp
     src/RiskEngine.cpp
     src/HistoricalPriceTracker.cpp
+    src/EtherscanClient.cpp
+    src/EnvLoader.cpp
+    src/test.cpp
+    
 )
 
 target_include_directories(stablecoin_tracker PRIVATE src/include)

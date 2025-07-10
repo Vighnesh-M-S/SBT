@@ -129,6 +129,54 @@ stablecoin_tracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/build
 .PHONY : stablecoin_tracker/fast
 
+src/EnvLoader.o: src/EnvLoader.cpp.o
+.PHONY : src/EnvLoader.o
+
+# target to build an object file
+src/EnvLoader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o
+.PHONY : src/EnvLoader.cpp.o
+
+src/EnvLoader.i: src/EnvLoader.cpp.i
+.PHONY : src/EnvLoader.i
+
+# target to preprocess a source file
+src/EnvLoader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.i
+.PHONY : src/EnvLoader.cpp.i
+
+src/EnvLoader.s: src/EnvLoader.cpp.s
+.PHONY : src/EnvLoader.s
+
+# target to generate assembly for a file
+src/EnvLoader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.s
+.PHONY : src/EnvLoader.cpp.s
+
+src/EtherscanClient.o: src/EtherscanClient.cpp.o
+.PHONY : src/EtherscanClient.o
+
+# target to build an object file
+src/EtherscanClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o
+.PHONY : src/EtherscanClient.cpp.o
+
+src/EtherscanClient.i: src/EtherscanClient.cpp.i
+.PHONY : src/EtherscanClient.i
+
+# target to preprocess a source file
+src/EtherscanClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.i
+.PHONY : src/EtherscanClient.cpp.i
+
+src/EtherscanClient.s: src/EtherscanClient.cpp.s
+.PHONY : src/EtherscanClient.s
+
+# target to generate assembly for a file
+src/EtherscanClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.s
+.PHONY : src/EtherscanClient.cpp.s
+
 src/HistoricalPriceTracker.o: src/HistoricalPriceTracker.cpp.o
 .PHONY : src/HistoricalPriceTracker.o
 
@@ -225,6 +273,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/test.o: src/test.cpp.o
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o
+.PHONY : src/test.cpp.o
+
+src/test.i: src/test.cpp.i
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
+
+src/test.s: src/test.cpp.s
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -234,6 +306,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... stablecoin_tracker"
+	@echo "... src/EnvLoader.o"
+	@echo "... src/EnvLoader.i"
+	@echo "... src/EnvLoader.s"
+	@echo "... src/EtherscanClient.o"
+	@echo "... src/EtherscanClient.i"
+	@echo "... src/EtherscanClient.s"
 	@echo "... src/HistoricalPriceTracker.o"
 	@echo "... src/HistoricalPriceTracker.i"
 	@echo "... src/HistoricalPriceTracker.s"
@@ -246,6 +324,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 

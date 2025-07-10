@@ -128,12 +128,57 @@ CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/HistoricalPriceTracker.cpp -o CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.s
 
+CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o: CMakeFiles/stablecoin_tracker.dir/flags.make
+CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o: /Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp
+CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o: CMakeFiles/stablecoin_tracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o -MF CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o.d -o CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o -c /Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp
+
+CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp > CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.i
+
+CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp -o CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.s
+
+CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o: CMakeFiles/stablecoin_tracker.dir/flags.make
+CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o: /Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp
+CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o: CMakeFiles/stablecoin_tracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o -MF CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o.d -o CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o -c /Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp
+
+CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp > CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.i
+
+CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp -o CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.s
+
+CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o: CMakeFiles/stablecoin_tracker.dir/flags.make
+CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o: /Users/vighneshms/Downloads/SBT/src/test.cpp
+CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o: CMakeFiles/stablecoin_tracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o -MF CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o.d -o CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o -c /Users/vighneshms/Downloads/SBT/src/test.cpp
+
+CMakeFiles/stablecoin_tracker.dir/src/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/stablecoin_tracker.dir/src/test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vighneshms/Downloads/SBT/src/test.cpp > CMakeFiles/stablecoin_tracker.dir/src/test.cpp.i
+
+CMakeFiles/stablecoin_tracker.dir/src/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/test.cpp -o CMakeFiles/stablecoin_tracker.dir/src/test.cpp.s
+
 # Object files for target stablecoin_tracker
 stablecoin_tracker_OBJECTS = \
 "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o" \
 "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o" \
 "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o" \
-"CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o"
+"CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o" \
+"CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o" \
+"CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o" \
+"CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o"
 
 # External object files for target stablecoin_tracker
 stablecoin_tracker_EXTERNAL_OBJECTS =
@@ -142,11 +187,14 @@ stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o
+stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o
+stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o
+stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/build.make
 stablecoin_tracker: /opt/homebrew/Cellar/curl/8.14.1/lib/libcurl.dylib
 stablecoin_tracker: /opt/homebrew/Cellar/curl/8.14.1/lib/libcurl.dylib
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable stablecoin_tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable stablecoin_tracker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stablecoin_tracker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

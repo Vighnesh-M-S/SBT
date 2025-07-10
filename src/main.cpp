@@ -1,10 +1,17 @@
 #include "PriceFeedManager.h"
 #include "RiskEngine.h"
 #include "HistoricalPriceTracker.h"
+#include "EnvLoader.h"
+#include "EtherscanClient.h"
+#include "test.h"
 #include <iostream>
 #include <thread>
+#include <cstdlib> 
 
 int main() {
+    EnvLoader::loadEnvFile("../.env");
+    // checkApiKey();
+
     std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
     PriceFeedManager manager;
@@ -13,6 +20,9 @@ int main() {
     RiskEngine risk(0.995, 0.990);
 
     HistoricalPriceTracker historyTracker;
+
+     
+    fetchUSDCTransfers();   
 
     
     while (true) {
@@ -34,4 +44,6 @@ int main() {
         std::cout << "----------------------------\n";
         std::this_thread::sleep_for(std::chrono::seconds(10));
     }
+
+    return 0;
 }
