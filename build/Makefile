@@ -129,6 +129,30 @@ stablecoin_tracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/build
 .PHONY : stablecoin_tracker/fast
 
+src/HistoricalPriceTracker.o: src/HistoricalPriceTracker.cpp.o
+.PHONY : src/HistoricalPriceTracker.o
+
+# target to build an object file
+src/HistoricalPriceTracker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o
+.PHONY : src/HistoricalPriceTracker.cpp.o
+
+src/HistoricalPriceTracker.i: src/HistoricalPriceTracker.cpp.i
+.PHONY : src/HistoricalPriceTracker.i
+
+# target to preprocess a source file
+src/HistoricalPriceTracker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.i
+.PHONY : src/HistoricalPriceTracker.cpp.i
+
+src/HistoricalPriceTracker.s: src/HistoricalPriceTracker.cpp.s
+.PHONY : src/HistoricalPriceTracker.s
+
+# target to generate assembly for a file
+src/HistoricalPriceTracker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.s
+.PHONY : src/HistoricalPriceTracker.cpp.s
+
 src/PriceFeedManager.o: src/PriceFeedManager.cpp.o
 .PHONY : src/PriceFeedManager.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... stablecoin_tracker"
+	@echo "... src/HistoricalPriceTracker.o"
+	@echo "... src/HistoricalPriceTracker.i"
+	@echo "... src/HistoricalPriceTracker.s"
 	@echo "... src/PriceFeedManager.o"
 	@echo "... src/PriceFeedManager.i"
 	@echo "... src/PriceFeedManager.s"

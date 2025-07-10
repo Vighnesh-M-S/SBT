@@ -13,6 +13,7 @@ add_executable(stablecoin_tracker
     src/main.cpp
     src/PriceFeedManager.cpp
     src/RiskEngine.cpp
+    src/HistoricalPriceTracker.cpp
 )
 
 target_include_directories(stablecoin_tracker PRIVATE src/include)
