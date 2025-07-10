@@ -249,6 +249,30 @@ src/RiskEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.s
 .PHONY : src/RiskEngine.cpp.s
 
+src/UniswapMonitor.o: src/UniswapMonitor.cpp.o
+.PHONY : src/UniswapMonitor.o
+
+# target to build an object file
+src/UniswapMonitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o
+.PHONY : src/UniswapMonitor.cpp.o
+
+src/UniswapMonitor.i: src/UniswapMonitor.cpp.i
+.PHONY : src/UniswapMonitor.i
+
+# target to preprocess a source file
+src/UniswapMonitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.i
+.PHONY : src/UniswapMonitor.cpp.i
+
+src/UniswapMonitor.s: src/UniswapMonitor.cpp.s
+.PHONY : src/UniswapMonitor.s
+
+# target to generate assembly for a file
+src/UniswapMonitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.s
+.PHONY : src/UniswapMonitor.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -321,6 +345,9 @@ help:
 	@echo "... src/RiskEngine.o"
 	@echo "... src/RiskEngine.i"
 	@echo "... src/RiskEngine.s"
+	@echo "... src/UniswapMonitor.o"
+	@echo "... src/UniswapMonitor.i"
+	@echo "... src/UniswapMonitor.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

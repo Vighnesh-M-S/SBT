@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o.d"
+  "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o"

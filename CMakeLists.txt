@@ -19,6 +19,7 @@ add_executable(stablecoin_tracker
     src/EtherscanClient.cpp
     src/EnvLoader.cpp
     src/test.cpp
+    src/UniswapMonitor.cpp
     
 )
 

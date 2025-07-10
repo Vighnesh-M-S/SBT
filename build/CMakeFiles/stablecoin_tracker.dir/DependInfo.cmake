@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/vighneshms/Downloads/SBT/src/HistoricalPriceTracker.cpp" "CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/PriceFeedManager.cpp" "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/RiskEngine.cpp" "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o.d"
+  "/Users/vighneshms/Downloads/SBT/src/UniswapMonitor.cpp" "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/main.cpp" "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/test.cpp" "CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/test.cpp.o.d"
   )
