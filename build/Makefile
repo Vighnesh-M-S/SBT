@@ -153,6 +153,30 @@ src/AaveClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.s
 .PHONY : src/AaveClient.cpp.s
 
+src/CurveClient.o: src/CurveClient.cpp.o
+.PHONY : src/CurveClient.o
+
+# target to build an object file
+src/CurveClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o
+.PHONY : src/CurveClient.cpp.o
+
+src/CurveClient.i: src/CurveClient.cpp.i
+.PHONY : src/CurveClient.i
+
+# target to preprocess a source file
+src/CurveClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.i
+.PHONY : src/CurveClient.cpp.i
+
+src/CurveClient.s: src/CurveClient.cpp.s
+.PHONY : src/CurveClient.s
+
+# target to generate assembly for a file
+src/CurveClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.s
+.PHONY : src/CurveClient.cpp.s
+
 src/EnvLoader.o: src/EnvLoader.cpp.o
 .PHONY : src/EnvLoader.o
 
@@ -357,6 +381,9 @@ help:
 	@echo "... src/AaveClient.o"
 	@echo "... src/AaveClient.i"
 	@echo "... src/AaveClient.s"
+	@echo "... src/CurveClient.o"
+	@echo "... src/CurveClient.i"
+	@echo "... src/CurveClient.s"
 	@echo "... src/EnvLoader.o"
 	@echo "... src/EnvLoader.i"
 	@echo "... src/EnvLoader.s"
