@@ -9,7 +9,7 @@ int main() {
     PriceFeedManager manager;
     manager.start();
 
-    RiskEngine risk;
+    RiskEngine risk(0.995, 0.990);
 
     
     while (true) {

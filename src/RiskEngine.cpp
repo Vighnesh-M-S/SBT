@@ -1,9 +1,12 @@
 #include "RiskEngine.h"
 
+RiskEngine::RiskEngine(double medium, double high)
+    : mediumThreshold(medium), highThreshold(high) {}
+
 RiskLevel RiskEngine::assessRisk(double price) {
-    if (price >= 0.995) {
+    if (price >= mediumThreshold) {
         return RiskLevel::SAFE;
-    } else if (price >= 0.990) {
+    } else if (price >= highThreshold) {
         return RiskLevel::MEDIUM;
     } else {
         return RiskLevel::HIGH;
