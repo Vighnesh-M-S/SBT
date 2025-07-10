@@ -153,6 +153,30 @@ src/PriceFeedManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.s
 .PHONY : src/PriceFeedManager.cpp.s
 
+src/RiskEngine.o: src/RiskEngine.cpp.o
+.PHONY : src/RiskEngine.o
+
+# target to build an object file
+src/RiskEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o
+.PHONY : src/RiskEngine.cpp.o
+
+src/RiskEngine.i: src/RiskEngine.cpp.i
+.PHONY : src/RiskEngine.i
+
+# target to preprocess a source file
+src/RiskEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.i
+.PHONY : src/RiskEngine.cpp.i
+
+src/RiskEngine.s: src/RiskEngine.cpp.s
+.PHONY : src/RiskEngine.s
+
+# target to generate assembly for a file
+src/RiskEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.s
+.PHONY : src/RiskEngine.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -189,6 +213,9 @@ help:
 	@echo "... src/PriceFeedManager.o"
 	@echo "... src/PriceFeedManager.i"
 	@echo "... src/PriceFeedManager.s"
+	@echo "... src/RiskEngine.o"
+	@echo "... src/RiskEngine.i"
+	@echo "... src/RiskEngine.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

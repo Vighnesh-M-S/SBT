@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/homebrew/include -I/Users/vighneshms/Downloads/SBT/src -isystem /opt/homebrew/Cellar/curl/8.14.1/include
+CXX_INCLUDES = -I/opt/homebrew/include -I/Users/vighneshms/Downloads/SBT/src/include -isystem /opt/homebrew/Cellar/curl/8.14.1/include
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

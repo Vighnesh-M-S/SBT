@@ -12,9 +12,11 @@ find_package(Threads REQUIRED)
 add_executable(stablecoin_tracker
     src/main.cpp
     src/PriceFeedManager.cpp
+    src/RiskEngine.cpp
 )
 
-target_include_directories(stablecoin_tracker PRIVATE src)
+target_include_directories(stablecoin_tracker PRIVATE src/include)
+
 target_link_libraries(stablecoin_tracker 
 CURL::libcurl 
 Threads::Threads

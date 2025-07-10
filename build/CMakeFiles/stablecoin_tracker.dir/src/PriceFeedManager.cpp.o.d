@@ -1,6 +1,6 @@
 CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o: \
   /Users/vighneshms/Downloads/SBT/src/PriceFeedManager.cpp \
-  /Users/vighneshms/Downloads/SBT/src/PriceFeedManager.h \
+  /Users/vighneshms/Downloads/SBT/src/include/PriceFeedManager.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/comp.h \

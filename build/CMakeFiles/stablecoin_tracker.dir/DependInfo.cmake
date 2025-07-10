@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/vighneshms/Downloads/SBT/src/PriceFeedManager.cpp" "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o.d"
+  "/Users/vighneshms/Downloads/SBT/src/RiskEngine.cpp" "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/main.cpp" "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o.d"
   )
 
