@@ -85,12 +85,12 @@ clean: CMakeFiles/stablecoin_tracker.dir/clean
 CMakeFiles/stablecoin_tracker.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target stablecoin_tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target stablecoin_tracker"
 .PHONY : CMakeFiles/stablecoin_tracker.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/stablecoin_tracker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vighneshms/Downloads/SBT/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vighneshms/Downloads/SBT/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/stablecoin_tracker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vighneshms/Downloads/SBT/build/CMakeFiles 0
 .PHONY : CMakeFiles/stablecoin_tracker.dir/rule
@@ -102,7 +102,7 @@ stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/rule
 # codegen rule for target.
 CMakeFiles/stablecoin_tracker.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target stablecoin_tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Finished codegen for target stablecoin_tracker"
 .PHONY : CMakeFiles/stablecoin_tracker.dir/codegen
 
 # clean rule for target.

@@ -6,6 +6,7 @@
 #include "UniswapMonitor.h"
 #include "AaveClient.h"
 #include "CurveClient.h"
+#include "TwitterClient.h"
 #include "test.h"
 #include <iostream>
 #include <thread>
@@ -16,7 +17,8 @@ int main() {
     // checkApiKey();
     // fetchUniswapStats();
     // AaveClient::fetchAaveLiquidity();
-    CurveClient::fetchCurveTokens();
+    // CurveClient::fetchCurveTokens();
+    TwitterClient::fetchRecentSentiment("usdc depeg");
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
     // PriceFeedManager manager;

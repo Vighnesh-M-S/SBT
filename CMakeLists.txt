@@ -22,6 +22,7 @@ add_executable(stablecoin_tracker
     src/UniswapMonitor.cpp
     src/AaveClient.cpp
     src/CurveClient.cpp
+    src/TwitterClient.cpp
     
 )
 

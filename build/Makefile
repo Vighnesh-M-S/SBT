@@ -297,6 +297,30 @@ src/RiskEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.s
 .PHONY : src/RiskEngine.cpp.s
 
+src/TwitterClient.o: src/TwitterClient.cpp.o
+.PHONY : src/TwitterClient.o
+
+# target to build an object file
+src/TwitterClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o
+.PHONY : src/TwitterClient.cpp.o
+
+src/TwitterClient.i: src/TwitterClient.cpp.i
+.PHONY : src/TwitterClient.i
+
+# target to preprocess a source file
+src/TwitterClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.i
+.PHONY : src/TwitterClient.cpp.i
+
+src/TwitterClient.s: src/TwitterClient.cpp.s
+.PHONY : src/TwitterClient.s
+
+# target to generate assembly for a file
+src/TwitterClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.s
+.PHONY : src/TwitterClient.cpp.s
+
 src/UniswapMonitor.o: src/UniswapMonitor.cpp.o
 .PHONY : src/UniswapMonitor.o
 
@@ -399,6 +423,9 @@ help:
 	@echo "... src/RiskEngine.o"
 	@echo "... src/RiskEngine.i"
 	@echo "... src/RiskEngine.s"
+	@echo "... src/TwitterClient.o"
+	@echo "... src/TwitterClient.i"
+	@echo "... src/TwitterClient.s"
 	@echo "... src/UniswapMonitor.o"
 	@echo "... src/UniswapMonitor.i"
 	@echo "... src/UniswapMonitor.s"
