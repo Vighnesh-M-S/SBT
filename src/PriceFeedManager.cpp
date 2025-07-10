@@ -19,11 +19,19 @@ void PriceFeedManager::start() {
 
 // The function that continuously fetches stablecoin prices from CoinGecko
 void PriceFeedManager::fetchPricesLoop() {
+    std::map<std::string, std::string> idToSymbol = {
+        {"usd-coin", "usdc"},
+        {"tether", "usdt"},
+        {"dai", "dai"},
+        {"frax", "frax"},
+        {"binance-usd", "busd"}
+    };
+
     while (true) {
         CURL* curl = curl_easy_init();
         std::string readBuffer;
 
-        curl_easy_setopt(curl, CURLOPT_URL, "https://api.coingecko.com/api/v3/simple/price?ids=usd-coin&vs_currencies=usd");
+        curl_easy_setopt(curl, CURLOPT_URL, "https://api.coingecko.com/api/v3/simple/price?ids=usd-coin,tether,dai,frax,binance-usd&vs_currencies=usd");
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
@@ -31,19 +39,25 @@ void PriceFeedManager::fetchPricesLoop() {
         curl_easy_cleanup(curl);
 
         if (res == CURLE_OK) {
-            // Debug log the raw JSON response
             std::cout << "Raw JSON: " << readBuffer << std::endl;
 
             Json::Reader reader;
             Json::Value root;
 
             if (reader.parse(readBuffer, root)) {
-                if (root.isMember("usd-coin") && root["usd-coin"].isMember("usd")) {
-                    std::lock_guard<std::mutex> lock(mtx_);
-                    long now = std::time(nullptr);
-                    prices_["usdc"] = { root["usd-coin"]["usd"].asDouble(), now };
-                } else {
-                    std::cerr << "⚠️  Invalid JSON structure or missing 'usd-coin'\n";
+                std::lock_guard<std::mutex> lock(mtx_);
+                long now = std::time(nullptr);
+
+                for (const auto& pair : idToSymbol) {
+                    const std::string& id = pair.first;
+                    const std::string& symbol = pair.second;
+
+                    if (root.isMember(id) && root[id].isMember("usd")) {
+                        double price = root[id]["usd"].asDouble();
+                        prices_[symbol] = { price, now };
+                    } else {
+                        std::cerr << "⚠️  Missing data for " << id << std::endl;
+                    }
                 }
             } else {
                 std::cerr << "❌ JSON parse error\n";

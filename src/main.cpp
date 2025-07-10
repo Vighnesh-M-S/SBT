@@ -3,17 +3,22 @@
 #include <thread>
 
 int main() {
+    std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
+
     PriceFeedManager manager;
     manager.start();
 
+    
     while (true) {
-        auto price = manager.getPrice("usdc");
-        if (price.timestamp != 0) {
-            std::cout << "USDC: $" << price.price << " @ " << price.timestamp << "\n";
-        } else {
-            std::cout << "Waiting for valid price...\n";
+        for (const auto& coin : coins) {
+            auto price = manager.getPrice(coin);
+            if (price.timestamp != 0) {
+                std::cout << coin << ": $" << price.price << " @ " << price.timestamp << "\n";
+            } else {
+                std::cout << coin << ": waiting for valid price...\n";
+            }
         }
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        std::cout << "----------------------------\n";
+        std::this_thread::sleep_for(std::chrono::seconds(10));
     }
 }
