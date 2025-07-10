@@ -129,6 +129,30 @@ stablecoin_tracker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/build
 .PHONY : stablecoin_tracker/fast
 
+src/AaveClient.o: src/AaveClient.cpp.o
+.PHONY : src/AaveClient.o
+
+# target to build an object file
+src/AaveClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o
+.PHONY : src/AaveClient.cpp.o
+
+src/AaveClient.i: src/AaveClient.cpp.i
+.PHONY : src/AaveClient.i
+
+# target to preprocess a source file
+src/AaveClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.i
+.PHONY : src/AaveClient.cpp.i
+
+src/AaveClient.s: src/AaveClient.cpp.s
+.PHONY : src/AaveClient.s
+
+# target to generate assembly for a file
+src/AaveClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.s
+.PHONY : src/AaveClient.cpp.s
+
 src/EnvLoader.o: src/EnvLoader.cpp.o
 .PHONY : src/EnvLoader.o
 
@@ -330,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... stablecoin_tracker"
+	@echo "... src/AaveClient.o"
+	@echo "... src/AaveClient.i"
+	@echo "... src/AaveClient.s"
 	@echo "... src/EnvLoader.o"
 	@echo "... src/EnvLoader.i"
 	@echo "... src/EnvLoader.s"

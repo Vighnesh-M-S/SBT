@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/vighneshms/Downloads/SBT/src/AaveClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp" "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/HistoricalPriceTracker.cpp" "CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/HistoricalPriceTracker.cpp.o.d"

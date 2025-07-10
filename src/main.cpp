@@ -4,6 +4,7 @@
 #include "EnvLoader.h"
 #include "EtherscanClient.h"
 #include "UniswapMonitor.h"
+#include "AaveClient.h"
 #include "test.h"
 #include <iostream>
 #include <thread>
@@ -12,7 +13,8 @@
 int main() {
     EnvLoader::loadEnvFile("../.env");
     // checkApiKey();
-    fetchUniswapStats();
+    // fetchUniswapStats();
+    AaveClient::fetchAaveLiquidity();
 
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 

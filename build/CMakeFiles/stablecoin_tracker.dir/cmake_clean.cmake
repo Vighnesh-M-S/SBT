@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o"
