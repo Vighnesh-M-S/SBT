@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o.d"
+  "CMakeFiles/stablecoin_tracker.dir/src/TwitterLogger.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/TwitterLogger.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o"

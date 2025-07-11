@@ -1,8 +1,10 @@
 #include "TwitterClient.h"
+#include "TwitterLogger.h"
 #include <curl/curl.h>
 #include <json/json.h>
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
     size_t total = size * nmemb;
@@ -23,6 +25,7 @@ void TwitterClient::fetchRecentSentiment(const std::string& keyword) {
     std::string response;
     CURL* curl = curl_easy_init();
     struct curl_slist* headers = nullptr;
+    std::vector<std::string> tweetTexts;
 
     if (curl) {
         std::string auth = "Authorization: Bearer " + std::string(bearer);
@@ -53,10 +56,16 @@ void TwitterClient::fetchRecentSentiment(const std::string& keyword) {
             }
             std::cout << "📊 Found " << tweets.size() << " recent tweets mentioning '" << keyword << "'\n";
             for (const auto& tweet : tweets) {
+                std::string text = tweet["text"].asString();
+                tweetTexts.push_back(text);
                 std::cout << "🔹 " << tweet["text"].asString().substr(0, 80) << "...\n";
+                
             }
+            TwitterLogger logger("usdc_tweets.txt");
+            logger.logTweets(tweetTexts);
         } else {
             std::cerr << "❌ Failed to parse Twitter response\n";
         }
     }
 }
+
