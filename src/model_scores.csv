@@ -1,2 +1,2 @@
-timestamp,priceTrendRisk,tweetScore,liquidityRisk,redemptionRisk,bridgeRisk
-2025-07-11 23:22:21,0.0006,0.5051,0.000000,0.000000,0.0
+timestamp,priceTrendRisk,tweetScore,liquidityRisk,redemptionRisk,bridgeRisk,whaleRisk 
+2025-07-11 23:22:21,0.0006,0.5051,0.000000,0.000000,0.200000,0.0

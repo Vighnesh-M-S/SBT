@@ -6,12 +6,19 @@
 #include <unordered_map>
 #include <set>
 #include <iomanip>
+#include <fstream>       
+#include <sstream>       
+#include <vector>        
+#include <string>        
+#include <algorithm> 
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
     size_t totalSize = size * nmemb;
     output->append((char*)contents, totalSize);
     return totalSize;
 }
+
+static Json::Value lastBridgeData;
 
 
 void BridgeClient::fetchBridgeEvents() {
@@ -105,4 +112,70 @@ void BridgeClient::analyzeBridgeEvents(const Json::Value& data) {
     }
 
     std::cout << "👥 Unique apps affected: " << uniqueUsers.size() << "\n";
+    lastBridgeData = data; 
+}
+
+double BridgeClient::computeBridgeRisk() {
+    if (lastBridgeData.isNull()) {
+        std::cerr << "⚠️ [Bridge] No cached data to compute risk.\n";
+        return 0.0;
+    }
+
+    const auto& inbound = lastBridgeData["addInboundProofLibraryForChains"];
+    const auto& updates = lastBridgeData["appConfigUpdateds"];
+
+    int totalEvents = inbound.size() + updates.size();
+
+    // Normalize based on an assumed max of 50 events = high risk
+    double risk = std::min(1.0, totalEvents / 50.0);
+
+    std::cout << "⚠️ [Bridge] Computed bridge risk score = " << risk << "\n";
+    return risk;
+}
+
+void BridgeClient::updateBridgeScoreCSV(double score, const std::string& csvPath) {
+    std::ifstream in(csvPath);
+    std::vector<std::string> lines;
+    std::string line;
+
+    if (!in) {
+        std::cerr << "❌ [Bridge] Cannot open CSV at: " << csvPath << "\n";
+        return;
+    }
+
+    while (std::getline(in, line)) lines.push_back(line);
+    in.close();
+
+    if (lines.size() < 2) {
+        std::cerr << "⚠️ Not enough rows in CSV to update.\n";
+        return;
+    }
+
+    std::stringstream ss(lines.back());
+    std::string field;
+    std::vector<std::string> fields;
+
+    while (std::getline(ss, field, ',')) fields.push_back(field);
+
+    if (fields.size() < 6) {
+        std::cerr << "⚠️ Unexpected CSV format.\n";
+        return;
+    }
+
+    std::ostringstream scoreStream;
+    scoreStream << std::fixed << std::setprecision(6) << score;
+    fields[5] = scoreStream.str();  // Update bridgeRisk
+
+    std::ostringstream updatedLine;
+    for (size_t i = 0; i < fields.size(); ++i) {
+        updatedLine << fields[i];
+        if (i < fields.size() - 1) updatedLine << ",";
+    }
+
+    lines.back() = updatedLine.str();
+
+    std::ofstream out(csvPath);
+    for (const auto& l : lines) out << l << "\n";
+
+    std::cout << "📈 [Bridge] ✅ bridgeRisk updated to " << score << "\n";
 }

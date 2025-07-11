@@ -7,7 +7,9 @@
 class BridgeClient {
 public:
     static void fetchBridgeEvents();
-    static void analyzeBridgeEvents(const Json::Value& data); 
+    static void analyzeBridgeEvents(const Json::Value& data);
+    static double computeBridgeRisk();
+    static void updateBridgeScoreCSV(double score, const std::string& csvPath);
 };
 
 #endif
