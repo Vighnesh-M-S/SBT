@@ -43,9 +43,10 @@ int main() {
 // double score = CurveClient::computeCurveRisk();
 // CurveClient::updateCurveScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
 // std::this_thread::sleep_for(std::chrono::minutes(1));
-BridgeClient::fetchBridgeEvents();
-double score = BridgeClient::computeBridgeRisk();
-BridgeClient::updateBridgeScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+// BridgeClient::fetchBridgeEvents();
+// double score = BridgeClient::computeBridgeRisk();
+// BridgeClient::updateBridgeScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+fetchUSDCTransfers();
 std::this_thread::sleep_for(std::chrono::minutes(1));
     }
 

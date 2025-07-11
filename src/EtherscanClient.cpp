@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <curl/curl.h>
 #include <json/json.h>
+#include <fstream>
+#include <iomanip>
 
 struct Transfer {
     std::string from;
@@ -75,8 +77,61 @@ void fetchUSDCTransfers() {
                 }
             }
 
-            std::cout << "💸 Large USDC Transfers: " << largeTransfers.size()
-                      << " detected in last fetch.\n";
+            std::cout << "💸 Large USDC Transfers: " << largeTransfers.size() << "\n";
+
+            // ---- Compute whaleRiskScore ----
+            double rawScore = largeTransfers.size();
+            double risk = std::min(1.0, rawScore / 50.0);
+            double riskScore = std::min(rawScore / 10.0, 1.0); // Normalize to 0–1
+
+            std::cout << "🐋 [Etherscan] Whale Risk Score = " << riskScore << "\n";
+
+            // ---- Update model_scores.csv ----
+            std::string csvPath = "/Users/vighneshms/Downloads/SBT/src/model_scores.csv";
+            std::ifstream in(csvPath);
+            std::vector<std::string> lines;
+            std::string line;
+
+            // Read all lines
+            while (std::getline(in, line)) {
+                lines.push_back(line);
+            }
+            in.close();
+
+            if (lines.size() <= 1) {
+                std::cerr << "⚠️ Not enough rows in CSV to update.\n";
+                return;
+            }
+
+            std::stringstream ss(lines.back());
+            std::string field;
+            std::vector<std::string> fields;
+
+            while (std::getline(ss, field, ',')) {
+                fields.push_back(field);
+            }
+
+            if (fields.size() >= 6) {
+                std::ostringstream scoreStream;
+                scoreStream << std::fixed << std::setprecision(6) << riskScore;
+                fields[6] = scoreStream.str(); 
+
+                std::ostringstream updatedLine;
+                for (size_t i = 0; i < fields.size(); ++i) {
+                    updatedLine << fields[i];
+                    if (i < fields.size() - 1) updatedLine << ",";
+                }
+
+                lines.back() = updatedLine.str();
+
+                std::ofstream out(csvPath);
+                for (const auto& l : lines) {
+                    out << l << "\n";
+                }
+                out.close();
+
+                std::cout << "📈 [Etherscan] ✅ whaleRisk updated to " << scoreStream.str() << "\n";
+            }
         } else {
             std::cerr << "❌ Failed to parse Etherscan JSON response.\n";
         }
