@@ -54,18 +54,21 @@ void TwitterClient::fetchRecentSentiment(const std::string& keyword) {
                 std::cout << "ℹ️ No recent tweets for '" << keyword << "'\n";
                 return;
             }
+
             std::cout << "📊 Found " << tweets.size() << " recent tweets mentioning '" << keyword << "'\n";
+
             for (const auto& tweet : tweets) {
                 std::string text = tweet["text"].asString();
                 tweetTexts.push_back(text);
-                std::cout << "🔹 " << tweet["text"].asString().substr(0, 80) << "...\n";
-                
+                std::cout << "🔹 " << text.substr(0, 80) << "...\n";
             }
+
+            // Write fresh batch (overwrites previous)
             TwitterLogger logger("usdc_tweets.txt");
             logger.logTweets(tweetTexts);
+
         } else {
             std::cerr << "❌ Failed to parse Twitter response\n";
         }
     }
 }
-
