@@ -13,6 +13,7 @@
 #include <iostream>
 #include <thread>
 #include <cstdlib> 
+#include <chrono>
 
 int main() {
     EnvLoader::loadEnvFile("../.env");
@@ -20,68 +21,51 @@ int main() {
     // fetchUniswapStats();
     // AaveClient::fetchAaveLiquidity();
     // CurveClient::fetchCurveTokens();
-    TwitterClient::fetchRecentSentiment("usdc depeg");
+    TwitterClient client;
     // BridgeClient::fetchBridgeEvents();
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
     // PriceFeedManager manager;
     // manager.start();
+    const std::string keyword = "usdc depeg";
+    const std::string tweetFile = "usdc_tweets.txt";
+
+    while (true) {
+        // clearTweetFile(tweetFile);
+        client.fetchRecentSentiment(keyword);
+
+        std::cout << "⏳ Waiting 1 minute before next fetch...\n";
+        std::this_thread::sleep_for(std::chrono::minutes(1));
+    }
+
 
     // RiskEngine risk(0.995, 0.990);
 
-    // HistoricalPriceTracker historyTracker;
+    // HistoricalPriceTracker tracker(60); 
 
      
     // fetchUSDCTransfers();   
     // std::vector<RiskSnapshot> allSnapshots;
 
-    // for (const auto& coin : coins) {
-    //     auto price = manager.getPrice(coin);
-    //     if (price.timestamp == 0) continue;
-
-    //     RiskLevel level = risk.assessRisk(price.price);
-    //     auto stats = historyTracker.analyze(coin);
-    //     int mentions = TwitterClient::getMentionCount(coin); // assume you stored recent count
-    //     double tvl = UniswapClient::getTVL(coin);             // stubbed example
-    //     double liquidity = AaveClient::getLiquidity(coin);    // stubbed example
-    //     int bridgeEvents = BridgeClient::getUpdates(coin);    // optional
-
-    //     allSnapshots.push_back({
-    //         coin,
-    //         price.price,
-    //         risk.riskToString(level),
-    //         stats.trendingDown,
-    //         stats.stddev,
-    //         mentions,
-    //         tvl,
-    //         liquidity,
-    //         bridgeEvents,
-    //         getCurrentTimestamp()
-    //     });
-    // }
-
-    // saveSnapshotToFile(allSnapshots);
-
     
-    // while (true) {
-    //     for (const auto& coin : coins) {
-    //         auto price = manager.getPrice(coin);
-    //         if (price.timestamp != 0) {
-    //             historyTracker.addPrice(coin, price.price);
-    //             RiskLevel level = risk.assessRisk(price.price);
-    //             auto stats = historyTracker.analyze(coin);
-    //             std::cout << coin << ": $" << price.price << " @ " << price.timestamp
-    //                       << " → Risk: " << risk.riskToString(level);
-    //                       if (stats.trendingDown) std::cout << " , 📉 trending down";
-    //                       if (stats.stddev > 0.002) std::cout << " , ⚠️ volatile";
-    //                       std::cout << "\n";
-    //         } else {
-    //             std::cout << coin << ": waiting for valid price...\n";
-    //         }
-    //     }
-    //     std::cout << "----------------------------\n";
-    //     std::this_thread::sleep_for(std::chrono::seconds(10));
-    // }
-
-    return 0;
-}
+        // HistoricalPriceTracker tracker(6);  // Track last 10 minutes (60 x 10s)
+        // std::string coin = "usdc";
+    
+        // Initial warmup: collect 10 mins worth of data
+        
+        // while (true) {
+        //     for (int i = 0; i < 6; ++i) {
+        //         auto price = manager.getPrice(coin);
+        //         if (price.timestamp != 0) {
+        //             tracker.addPrice(coin, price.price);
+        //         }
+        //         std::this_thread::sleep_for(std::chrono::seconds(10));
+        //     }
+    
+        //     tracker.updateRiskCSV(coin, "model_scores.csv");
+        //     std::cout << "🔄 Updated trend score\n";
+        // }
+    
+        return 0;
+    }
+    
