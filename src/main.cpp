@@ -21,21 +21,25 @@ int main() {
     // fetchUniswapStats();
     // AaveClient::fetchAaveLiquidity();
     // CurveClient::fetchCurveTokens();
-    TwitterClient client;
+    // TwitterClient client;
     // BridgeClient::fetchBridgeEvents();
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
     // PriceFeedManager manager;
     // manager.start();
-    const std::string keyword = "usdc depeg";
-    const std::string tweetFile = "usdc_tweets.txt";
+    // const std::string keyword = "usdc depeg";
+    // const std::string tweetFile = "usdc_tweets.txt";
 
     while (true) {
         // clearTweetFile(tweetFile);
-        client.fetchRecentSentiment(keyword);
+        // client.fetchRecentSentiment(keyword);
 
-        std::cout << "⏳ Waiting 1 minute before next fetch...\n";
-        std::this_thread::sleep_for(std::chrono::minutes(1));
+        // std::cout << "⏳ Waiting 1 minute before next fetch...\n";
+        // std::this_thread::sleep_for(std::chrono::minutes(1));
+        AaveClient client;
+client.fetchAaveLiquidity();
+client.updateLiquidityScoreCSV("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+std::this_thread::sleep_for(std::chrono::minutes(10));
     }
 
 
