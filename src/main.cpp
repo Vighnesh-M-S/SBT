@@ -36,10 +36,13 @@ int main() {
 
         // std::cout << "⏳ Waiting 1 minute before next fetch...\n";
         // std::this_thread::sleep_for(std::chrono::minutes(1));
-        AaveClient client;
-client.fetchAaveLiquidity();
-client.updateLiquidityScoreCSV("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
-std::this_thread::sleep_for(std::chrono::minutes(10));
+//         AaveClient client;
+// client.fetchAaveLiquidity();
+// client.updateLiquidityScoreCSV("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+CurveClient::fetchCurveTokens();
+double score = CurveClient::computeCurveRisk();
+CurveClient::updateCurveScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+std::this_thread::sleep_for(std::chrono::minutes(1));
     }
 
 

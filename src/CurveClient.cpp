@@ -1,9 +1,15 @@
 #include "CurveClient.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <vector>
+#include <string>
 #include <curl/curl.h>
 #include <json/json.h>
-#include <sstream>
-#include <cstdlib>
+#include <filesystem>
+
+static Json::Value lastCurveData;
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
     size_t totalSize = size * nmemb;
@@ -83,7 +89,71 @@ void CurveClient::fetchCurveTokens() {
             std::cerr << "❌ Error in GraphQL response: " << root["errors"] << std::endl;
             return;
         }
+        lastCurveData = root["data"];  // Save for scoring
+        std::cout << "✅ Curve Tokens Response Parsed:\n" << std::endl;
+    }
+}
 
-        std::cout << "✅ Curve Tokens Response Parsed:\n" << root["data"] << std::endl;
+double CurveClient::computeCurveRisk() {
+    if (lastCurveData.isNull()) {
+        std::cerr << "⚠️ No Curve data available to compute risk.\n";
+        return 1.0;  // Max risk
+    }
+
+    const auto& tokens = lastCurveData["tokens"];
+    const auto& rewards = lastCurveData["rewardTokens"];
+
+    int tokenCount = tokens.isArray() ? tokens.size() : 0;
+    int rewardCount = rewards.isArray() ? rewards.size() : 0;
+
+    // 🧠 Simple scoring logic: More tokens/rewards → less risk
+    int maxPossible = 10;
+    int total = tokenCount + rewardCount;
+    double score = 1.0 - std::min(total, maxPossible) / static_cast<double>(maxPossible);
+
+    std::cout << "💱 [Curve] tokenCount = " << tokenCount << ", rewardCount = " << rewardCount
+              << " → riskScore = " << score << "\n";
+
+    return score;
+}
+
+void CurveClient::updateCurveScoreCSV(double score, const std::string& csvPath) {
+    std::ifstream in(csvPath);
+    if (!in) {
+        std::cerr << "❌ [Curve] Failed to open CSV: " << csvPath << "\n";
+        return;
+    }
+
+    std::vector<std::string> lines;
+    std::string line;
+    while (std::getline(in, line)) lines.push_back(line);
+    in.close();
+
+    if (lines.size() < 2) {
+        std::cerr << "⚠️ [Curve] Not enough data rows in CSV to update.\n";
+        return;
+    }
+
+    std::stringstream ss(lines.back());
+    std::string field;
+    std::vector<std::string> fields;
+    while (std::getline(ss, field, ',')) fields.push_back(field);
+
+    if (fields.size() >= 6) {
+        std::ostringstream scoreStream;
+        scoreStream << std::fixed << std::setprecision(6) << score;
+        fields[4] = scoreStream.str();  // curveRisk column
+
+        std::ostringstream updatedLine;
+        for (size_t i = 0; i < fields.size(); ++i) {
+            updatedLine << fields[i];
+            if (i < fields.size() - 1) updatedLine << ",";
+        }
+        lines.back() = updatedLine.str();
+
+        std::ofstream out(csvPath);
+        for (const auto& l : lines) out << l << "\n";
+
+        std::cout << "📈 [Curve] ✅ curveRisk updated to " << scoreStream.str() << "\n";
     }
 }
