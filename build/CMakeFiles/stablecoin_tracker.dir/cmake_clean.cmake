@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o.d"
+  "CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o"
@@ -13,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/stablecoin_tracker.dir/src/PriceFeedManager.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.o.d"
+  "CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o"

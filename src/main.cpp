@@ -8,6 +8,8 @@
 #include "CurveClient.h"
 #include "TwitterClient.h"
 #include "test.h"
+#include "BridgeClient.h"
+#include "RiskSnapshot.h"
 #include <iostream>
 #include <thread>
 #include <cstdlib> 
@@ -18,7 +20,8 @@ int main() {
     // fetchUniswapStats();
     // AaveClient::fetchAaveLiquidity();
     // CurveClient::fetchCurveTokens();
-    TwitterClient::fetchRecentSentiment("usdc depeg");
+    // TwitterClient::fetchRecentSentiment("usdc depeg");
+    // BridgeClient::fetchBridgeEvents();
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
     // PriceFeedManager manager;
@@ -30,6 +33,34 @@ int main() {
 
      
     // fetchUSDCTransfers();   
+    std::vector<RiskSnapshot> allSnapshots;
+
+    for (const auto& coin : coins) {
+        auto price = manager.getPrice(coin);
+        if (price.timestamp == 0) continue;
+
+        RiskLevel level = risk.assessRisk(price.price);
+        auto stats = historyTracker.analyze(coin);
+        int mentions = TwitterClient::getMentionCount(coin); // assume you stored recent count
+        double tvl = UniswapClient::getTVL(coin);             // stubbed example
+        double liquidity = AaveClient::getLiquidity(coin);    // stubbed example
+        int bridgeEvents = BridgeClient::getUpdates(coin);    // optional
+
+        allSnapshots.push_back({
+            coin,
+            price.price,
+            risk.riskToString(level),
+            stats.trendingDown,
+            stats.stddev,
+            mentions,
+            tvl,
+            liquidity,
+            bridgeEvents,
+            getCurrentTimestamp()
+        });
+    }
+
+    saveSnapshotToFile(allSnapshots);
 
     
     // while (true) {

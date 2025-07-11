@@ -153,6 +153,30 @@ src/AaveClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.s
 .PHONY : src/AaveClient.cpp.s
 
+src/BridgeClient.o: src/BridgeClient.cpp.o
+.PHONY : src/BridgeClient.o
+
+# target to build an object file
+src/BridgeClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o
+.PHONY : src/BridgeClient.cpp.o
+
+src/BridgeClient.i: src/BridgeClient.cpp.i
+.PHONY : src/BridgeClient.i
+
+# target to preprocess a source file
+src/BridgeClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.i
+.PHONY : src/BridgeClient.cpp.i
+
+src/BridgeClient.s: src/BridgeClient.cpp.s
+.PHONY : src/BridgeClient.s
+
+# target to generate assembly for a file
+src/BridgeClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.s
+.PHONY : src/BridgeClient.cpp.s
+
 src/CurveClient.o: src/CurveClient.cpp.o
 .PHONY : src/CurveClient.o
 
@@ -297,6 +321,30 @@ src/RiskEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskEngine.cpp.s
 .PHONY : src/RiskEngine.cpp.s
 
+src/RiskLogger.o: src/RiskLogger.cpp.o
+.PHONY : src/RiskLogger.o
+
+# target to build an object file
+src/RiskLogger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o
+.PHONY : src/RiskLogger.cpp.o
+
+src/RiskLogger.i: src/RiskLogger.cpp.i
+.PHONY : src/RiskLogger.i
+
+# target to preprocess a source file
+src/RiskLogger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.i
+.PHONY : src/RiskLogger.cpp.i
+
+src/RiskLogger.s: src/RiskLogger.cpp.s
+.PHONY : src/RiskLogger.s
+
+# target to generate assembly for a file
+src/RiskLogger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.s
+.PHONY : src/RiskLogger.cpp.s
+
 src/TwitterClient.o: src/TwitterClient.cpp.o
 .PHONY : src/TwitterClient.o
 
@@ -405,6 +453,9 @@ help:
 	@echo "... src/AaveClient.o"
 	@echo "... src/AaveClient.i"
 	@echo "... src/AaveClient.s"
+	@echo "... src/BridgeClient.o"
+	@echo "... src/BridgeClient.i"
+	@echo "... src/BridgeClient.s"
 	@echo "... src/CurveClient.o"
 	@echo "... src/CurveClient.i"
 	@echo "... src/CurveClient.s"
@@ -423,6 +474,9 @@ help:
 	@echo "... src/RiskEngine.o"
 	@echo "... src/RiskEngine.i"
 	@echo "... src/RiskEngine.s"
+	@echo "... src/RiskLogger.o"
+	@echo "... src/RiskLogger.i"
+	@echo "... src/RiskLogger.s"
 	@echo "... src/TwitterClient.o"
 	@echo "... src/TwitterClient.i"
 	@echo "... src/TwitterClient.s"

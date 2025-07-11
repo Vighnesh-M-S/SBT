@@ -226,6 +226,34 @@ CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/TwitterClient.cpp -o CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.s
 
+CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o: CMakeFiles/stablecoin_tracker.dir/flags.make
+CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o: /Users/vighneshms/Downloads/SBT/src/BridgeClient.cpp
+CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o: CMakeFiles/stablecoin_tracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o -MF CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o.d -o CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o -c /Users/vighneshms/Downloads/SBT/src/BridgeClient.cpp
+
+CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vighneshms/Downloads/SBT/src/BridgeClient.cpp > CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.i
+
+CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/BridgeClient.cpp -o CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.s
+
+CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o: CMakeFiles/stablecoin_tracker.dir/flags.make
+CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o: /Users/vighneshms/Downloads/SBT/src/RiskLogger.cpp
+CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o: CMakeFiles/stablecoin_tracker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o -MF CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o.d -o CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o -c /Users/vighneshms/Downloads/SBT/src/RiskLogger.cpp
+
+CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vighneshms/Downloads/SBT/src/RiskLogger.cpp > CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.i
+
+CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vighneshms/Downloads/SBT/src/RiskLogger.cpp -o CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.s
+
 # Object files for target stablecoin_tracker
 stablecoin_tracker_OBJECTS = \
 "CMakeFiles/stablecoin_tracker.dir/src/main.cpp.o" \
@@ -238,7 +266,9 @@ stablecoin_tracker_OBJECTS = \
 "CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o" \
 "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o" \
 "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o" \
-"CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o"
+"CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o" \
+"CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o" \
+"CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o"
 
 # External object files for target stablecoin_tracker
 stablecoin_tracker_EXTERNAL_OBJECTS =
@@ -254,11 +284,13 @@ stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/UniswapMonitor.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/TwitterClient.cpp.o
+stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o
+stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/src/RiskLogger.cpp.o
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/build.make
 stablecoin_tracker: /opt/homebrew/Cellar/curl/8.14.1/lib/libcurl.dylib
 stablecoin_tracker: /opt/homebrew/Cellar/curl/8.14.1/lib/libcurl.dylib
 stablecoin_tracker: CMakeFiles/stablecoin_tracker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable stablecoin_tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vighneshms/Downloads/SBT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable stablecoin_tracker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stablecoin_tracker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

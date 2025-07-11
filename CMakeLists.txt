@@ -23,7 +23,8 @@ add_executable(stablecoin_tracker
     src/AaveClient.cpp
     src/CurveClient.cpp
     src/TwitterClient.cpp
-    
+    src/BridgeClient.cpp
+    src/RiskLogger.cpp
 )
 
 target_include_directories(stablecoin_tracker PRIVATE src/include)
