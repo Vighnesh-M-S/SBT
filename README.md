@@ -16,7 +16,7 @@ _Describe key components such as data collectors (Etherscan, Aave, Uniswap, Curv
 - Weighted risk aggregation for final depeg score
 
 ### 1.3 Performance Characteristics and Benchmarks
-- Each data source fetch completes under X ms on average
+- Each data source fetch completes under 5000 ms on average
 - Full pipeline prediction runs in Y seconds
 
 ## Video Explanation
@@ -26,12 +26,83 @@ _Describe key components such as data collectors (Etherscan, Aave, Uniswap, Curv
 ## 2. Code Documentation
 
 ### 2.1 API Documentation
-- **fetchUSDCTransfers()**: Collects USDC whale transfers
-- **fetchAaveLiquidity()**: Gathers Aave liquidity data
-- **fetchCurveTokens()**: Fetches Curve pool and reward token state
-- **fetchUniswapStats()**: Collects total TVL, txCount, and ETH price
-- **computeDepegRiskScore()**: Aggregates feature scores to final risk
-- **updateRiskCSV()**: Writes risk values to CSV
+
+- **`fetchUSDCTransfers()`**  
+  → Fetches large USDC token transfers using Etherscan's token transfer API.  
+  → Filters transactions over $100,000 and logs whale activity.  
+  → Outputs whaleRisk score.
+
+---
+
+- **`fetchAaveLiquidity()`**  
+  → Pulls reserve liquidity data from Aave using TheGraph.  
+  → Calculates available liquidity for stablecoin markets.  
+  → Outputs normalized `liquidityRisk` score (higher = riskier).
+
+---
+
+- **`fetchCurveTokens()`**  
+  → Uses TheGraph to get token and reward token configurations on Curve Finance.  
+  → Monitors pool token availability and reward status.  
+  → Assesses protocol usage and incentive health.
+
+---
+
+- **`fetchUniswapStats()`**  
+  → Retrieves UniswapV3's global metrics including `totalVolumeUSD`, `txCount`, and `poolCount`.  
+  → Computes a composite `uniswapRisk` based on protocol activity and TVL normalization.  
+  → Useful for gauging ecosystem health.
+
+---
+
+- **`analyzeBridgeEvents()`**  
+  → Processes LayerZero events such as `addInboundProofLibraryForChains` and `appConfigUpdateds`.  
+  → Counts frequency of updates and number of unique apps affected.  
+  → Outputs `bridgeRisk` based on abnormal config churn.
+
+---
+
+- **`runTweetScoringModel()`** *(Python function, triggered from C++)*  
+  → Loads tweets via Twitter API or text file.  
+  → Scores each tweet using a fine-tuned LLM or sentiment model.  
+  → Averages scores to generate `tweetScore` risk value.
+
+---
+
+- **`analyze()` [HistoricalPriceTracker]**  
+  → Computes average, standard deviation, and trend from price history.  
+  → Detects downtrends and high volatility.  
+  → Returns `trendRiskScore`.
+
+---
+
+- **`updateRiskCSV()`**  
+  → Appends new timestamped risk scores to `model_scores.csv`.  
+  → Updates fields: `trendScore`, `tweetScore`, `liquidityRisk`, `redemptionRisk`, `bridgeRisk`, `whaleRisk`, `uniswapRisk`.  
+  → Creates CSV with headers if missing.
+
+---
+
+- **`computeDepegRiskScore()`**  
+  → Aggregates individual risk components into a weighted final score (0 to 1).  
+  → Uses weighted formula:
+
+```
+0.25 * priceTrend +
+0.20 * tweetScore +
+0.15 * liquidity +
+0.10 * redemption +
+0.10 * bridge +
+0.10 * whale +
+0.10 * tvl
+```
+
+---
+
+- **`displayDashboard()`**  
+  → Renders a terminal dashboard view with current prices, individual risk scores, and final total depeg score.  
+  → Reads from `model_scores.csv` and uses `PriceManager` for live prices.  
+  → Clean UI with overwriting, not clutter.
 
 ### 2.3 Setup and Deployment Instructions
 ```bash
