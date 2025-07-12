@@ -138,7 +138,7 @@ make
 - Handles 1 fetch-predict cycle every 10 minutes (6 per hour)
 
 ### 3.3 Memory Usage Analysis
-- RSS memory footprint under XX MB
+- RSS memory footprint 
 
 ## 4. Financial Documentation
 
