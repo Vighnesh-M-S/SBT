@@ -104,6 +104,9 @@ _Describe key components such as data collectors (Etherscan, Aave, Uniswap, Curv
   → Reads from `model_scores.csv` and uses `PriceManager` for live prices.  
   → Clean UI with overwriting, not clutter.
 
+  ### Final Output
+      ![output Screenshot](./screenshots/output.png) 
+
 ### 2.3 Setup and Deployment Instructions
 ```bash
 # Clone repo
@@ -148,8 +151,7 @@ make
 - Sends alert if `depegRisk > 0.7`
 - Prevents false positives through moving average smoothing
 
-## Final Output
-![output Screenshot](./screenshots/output.png) 
+
 
 ---
 
