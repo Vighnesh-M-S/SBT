@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o.d"
+  "CMakeFiles/stablecoin_tracker.dir/src/Dashboard.cpp.o"
+  "CMakeFiles/stablecoin_tracker.dir/src/Dashboard.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.o"
   "CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.o.d"
   "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o"

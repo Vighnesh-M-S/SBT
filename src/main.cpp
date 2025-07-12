@@ -11,6 +11,7 @@
 #include "BridgeClient.h"
 #include "RiskSnapshot.h"
 #include "DepegPredictor.h"
+#include "Dashboard.h"
 #include <iostream>
 #include <thread>
 #include <cstdlib> 
@@ -31,18 +32,26 @@ int main() {
     HistoricalPriceTracker tracker(60); 
 
     PriceFeedManager manager;
-    // manager.start();
+    manager.start();
     const std::string keyword = "usdc depeg";
     const std::string tweetFile = "usdc_tweets.txt";
     const std::string loc = "/Users/vighneshms/Downloads/SBT/src/model_scores.csv";
     const std::string coin = "usdc";
+    double finalScore = 0.0;
+
+    while (true) {
+        showDashboard(loc, manager);
+        std::this_thread::sleep_for(std::chrono::seconds(10));
+    }
 
     while (true) {
         // clearTweetFile(tweetFile);
+        // showDashboard(loc, manager, finalScore);
         
 
         for (int i = 0; i < 6; ++i) {
                     auto price = manager.getPrice(coin);
+                    // std::cout << "💱 " << coin << " price: " << price.price << "\n";
                     if (price.timestamp != 0) {
                         tracker.addPrice(coin, price.price);
                     }
@@ -50,14 +59,14 @@ int main() {
                 }
         
                 tracker.updateRiskCSV(coin, loc);
-                std::cout << "🔄 Updated trend score\n";
+                // std::cout << "🔄 Updated trend score\n";
         client.fetchRecentSentiment(keyword);
         int result = std::system("python3 /Users/vighneshms/Downloads/SBT/src/tweet_score_updater.py");
-    if (result != 0) {
-        std::cerr << "❌ Python script failed.\n";
-    } else {
-        std::cout << "✅ Python tweet scoring script completed.\n";
-    }
+    // if (result != 0) {
+    //     std::cerr << "❌ Python script failed.\n";
+    // } else {
+    //     std::cout << "✅ Python tweet scoring script completed.\n";
+    // }
 
         AaveClient client2;
         client2.fetchAaveLiquidity();
@@ -78,9 +87,13 @@ int main() {
         }
 
     
-        double finalScore = computeDepegRiskScore("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+        // double finalScore = computeDepegRiskScore("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
         std::this_thread::sleep_for(std::chrono::minutes(1));
+
+        
         }
+        
+
     
 
      

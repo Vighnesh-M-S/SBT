@@ -64,7 +64,7 @@ def update_tweet_score():
 
     # Save back
     df.to_csv(CSV_PATH, index=False)
-    print(f"✅ Tweet risk score ({avg_score:.4f}) added to {CSV_PATH}")
+    # print(f"✅ Tweet risk score ({avg_score:.4f}) added to {CSV_PATH}")
 
 if __name__ == "__main__":
     update_tweet_score()

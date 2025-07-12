@@ -90,7 +90,7 @@ void CurveClient::fetchCurveTokens() {
             return;
         }
         lastCurveData = root["data"];  // Save for scoring
-        std::cout << "✅ Curve Tokens Response Parsed:\n" << std::endl;
+        // std::cout << "✅ Curve Tokens Response Parsed:\n" << std::endl;
     }
 }
 
@@ -111,8 +111,8 @@ double CurveClient::computeCurveRisk() {
     int total = tokenCount + rewardCount;
     double score = 1.0 - std::min(total, maxPossible) / static_cast<double>(maxPossible);
 
-    std::cout << "💱 [Curve] tokenCount = " << tokenCount << ", rewardCount = " << rewardCount
-              << " → riskScore = " << score << "\n";
+    // std::cout << "💱 [Curve] tokenCount = " << tokenCount << ", rewardCount = " << rewardCount
+    //           << " → riskScore = " << score << "\n";
 
     return score;
 }
@@ -154,6 +154,6 @@ void CurveClient::updateCurveScoreCSV(double score, const std::string& csvPath) 
         std::ofstream out(csvPath);
         for (const auto& l : lines) out << l << "\n";
 
-        std::cout << "📈 [Curve] ✅ curveRisk updated to " << scoreStream.str() << "\n";
+        // std::cout << "📈 [Curve] ✅ curveRisk updated to " << scoreStream.str() << "\n";
     }
 }

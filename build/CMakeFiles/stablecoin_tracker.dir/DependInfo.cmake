@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/vighneshms/Downloads/SBT/src/AaveClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/AaveClient.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/BridgeClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/BridgeClient.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/CurveClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.o.d"
+  "/Users/vighneshms/Downloads/SBT/src/Dashboard.cpp" "CMakeFiles/stablecoin_tracker.dir/src/Dashboard.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/Dashboard.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/DepegPredictor.cpp" "CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/EnvLoader.cpp" "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/EnvLoader.cpp.o.d"
   "/Users/vighneshms/Downloads/SBT/src/EtherscanClient.cpp" "CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o" "gcc" "CMakeFiles/stablecoin_tracker.dir/src/EtherscanClient.cpp.o.d"

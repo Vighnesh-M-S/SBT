@@ -98,20 +98,20 @@ void BridgeClient::analyzeBridgeEvents(const Json::Value& data) {
     }
 
     // Print bridge activity summary
-    std::cout << "🌉 Bridge Activity Summary:\n";
+    // std::cout << "🌉 Bridge Activity Summary:\n";
 
-    std::cout << "🔢 Chain Event Counts:\n";
+    // std::cout << "🔢 Chain Event Counts:\n";
     for (const auto& [chainId, count] : chainEventCount) {
-        std::cout << "  - Chain ID " << std::setw(4) << chainId << ": " << count << " updates\n";
+        // std::cout << "  - Chain ID " << std::setw(4) << chainId << ": " << count << " updates\n";
     }
 
-    std::cout << "⚙️ Config Type Updates:\n";
+    // std::cout << "⚙️ Config Type Updates:\n";
     for (const auto& [type, count] : configTypeCount) {
         std::string alert = (count > 2) ? " ⚠️" : "";
-        std::cout << "  - Type " << type << ": " << count << " changes" << alert << "\n";
+        // std::cout << "  - Type " << type << ": " << count << " changes" << alert << "\n";
     }
 
-    std::cout << "👥 Unique apps affected: " << uniqueUsers.size() << "\n";
+    // std::cout << "👥 Unique apps affected: " << uniqueUsers.size() << "\n";
     lastBridgeData = data; 
 }
 
@@ -129,7 +129,7 @@ double BridgeClient::computeBridgeRisk() {
     // Normalize based on an assumed max of 50 events = high risk
     double risk = std::min(1.0, totalEvents / 50.0);
 
-    std::cout << "⚠️ [Bridge] Computed bridge risk score = " << risk << "\n";
+    // std::cout << "⚠️ [Bridge] Computed bridge risk score = " << risk << "\n";
     return risk;
 }
 
@@ -177,5 +177,5 @@ void BridgeClient::updateBridgeScoreCSV(double score, const std::string& csvPath
     std::ofstream out(csvPath);
     for (const auto& l : lines) out << l << "\n";
 
-    std::cout << "📈 [Bridge] ✅ bridgeRisk updated to " << score << "\n";
+    // std::cout << "📈 [Bridge] ✅ bridgeRisk updated to " << score << "\n";
 }

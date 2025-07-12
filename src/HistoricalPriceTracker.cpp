@@ -95,5 +95,5 @@ void HistoricalPriceTracker::updateRiskCSV(const std::string& coin, const std::s
     fileOut << timestamp.str() << "," << score
             << ",0.0,0.0,0.0,0.0,0.0,0.0\n";
 
-    std::cout << "📈 [Historical] Appended trend risk score = " << score << " at " << timestamp.str() << "\n";
+    // std::cout << "📈 [Historical] Appended trend risk score = " << score << " at " << timestamp.str() << "\n";
 }

@@ -54,10 +54,10 @@ void PriceFeedManager::fetchPricesLoop() {
 
                     if (root.isMember(id) && root[id].isMember("usd")) {
                         double price = root[id]["usd"].asDouble();
-                        prices_[symbol] = { price, now };
-                    } else {
-                        std::cerr << "⚠️  Missing data for " << id << std::endl;
-                    }
+                        prices_[symbol] = { price, now };}
+                    // } else {
+                    //     std::cerr << "⚠️  Missing data for " << id << std::endl;
+                    // }
                 }
             } else {
                 std::cerr << "❌ JSON parse error\n";

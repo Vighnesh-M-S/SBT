@@ -59,14 +59,14 @@ double computeDepegRiskScore(const std::string& csvPath) {
     0.10 * whale +
     0.15 * tvl;
 
-    std::cout << "📉 [DEPEG PREDICTOR] Combined Risk Score = " << riskScore << "\n";
+    // std::cout << "📉 [DEPEG PREDICTOR] Combined Risk Score = " << riskScore << "\n";
 
-    if (riskScore >= 0.7) {
-        std::cout << "🚨 [ALERT] High depeg risk detected!\n";
-    }
-    else {
-        std::cout << "🚨 [ALERT] Low depeg risk detected!\n";
-    }
+    // if (riskScore >= 0.7) {
+    //     std::cout << "🚨 [ALERT] High depeg risk detected!\n";
+    // }
+    // else {
+    //     std::cout << "🚨 [ALERT] Low depeg risk detected!\n";
+    // }
 
     return riskScore;
 }

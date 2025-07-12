@@ -27,5 +27,5 @@ void EnvLoader::loadEnvFile(const std::string& path) {
         }
         
     }
-    std::cout << "🔧 Loaded .env file\n";
+    // std::cout << "🔧 Loaded .env file\n";
 }

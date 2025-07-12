@@ -75,10 +75,10 @@ UniswapStats fetchUniswapStats() {
         int pools = std::stoi(factories[0]["poolCount"].asString());
         int txs = std::stoi(factories[0]["txCount"].asString());
 
-        std::cout << "✅ TVL Response Parsed.\n";
+        // std::cout << "✅ TVL Response Parsed.\n";
 
         double risk = computeUniswapRiskScore(volume, pools, txs);
-        std::cout << "🦄 [Uniswap] Risk score = " << risk << "\n";
+        // std::cout << "🦄 [Uniswap] Risk score = " << risk << "\n";
 
         updateUniswapScoreCSV(risk, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
     } catch (const std::exception& e) {
@@ -160,5 +160,5 @@ for (const auto& l : lines) {
 }
 out.close();
 
-std::cout << "📈 [Uniswap] ✅ uniswapRisk updated to " << scoreStream.str() << "\n";
+// std::cout << "📈 [Uniswap] ✅ uniswapRisk updated to " << scoreStream.str() << "\n";
 }
