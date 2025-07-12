@@ -60,7 +60,7 @@ void TwitterClient::fetchRecentSentiment(const std::string& keyword) {
             for (const auto& tweet : tweets) {
                 std::string text = tweet["text"].asString();
                 tweetTexts.push_back(text);
-                std::cout << "🔹 " << text.substr(0, 80) << "...\n";
+                // std::cout << "🔹 " << text.substr(0, 80) << "...\n";
             }
 
             // Write fresh batch (overwrites previous)

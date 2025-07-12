@@ -54,79 +54,46 @@ HistoricalStats HistoricalPriceTracker::analyze(const std::string& coin) {
 
 void HistoricalPriceTracker::updateRiskCSV(const std::string& coin, const std::string& csvPath) {
     HistoricalStats stats = analyze(coin);
+
     double stddevWeight = 0.4;
-double trendWeight = 0.6;
+    double trendWeight = 0.6;
 
-// Normalize stddev: scale it to [0, 1] capped at 0.005
-double normStdDev = std::min(stats.stddev / 0.005, 1.0);
-double stddevScore = normStdDev * stddevWeight;
+    // Normalize stddev
+    double normStdDev = std::min(stats.stddev / 0.005, 1.0);
+    double stddevScore = normStdDev * stddevWeight;
 
-// Normalize trend: if trendingDown is true, assign full trend weight; else zero
-double trendScore = stats.trendingDown ? trendWeight : 0.0;
+    // Trend score
+    double trendScore = stats.trendingDown ? trendWeight : 0.0;
 
-// Total score
-double score = stddevScore + trendScore;
-if (score < 1e-6) score = 0.0;
-stats.riskScore = score;
+    // Final risk score
+    double score = stddevScore + trendScore;
+    if (score < 1e-6) score = 0.0;
+    stats.riskScore = score;
 
-    std::cout << "📊 [Debug] avg = " << stats.avg
-              << ", stddev = " << stats.stddev
-              << ", trendingDown = " << stats.trendingDown
-              << ", riskScore = " << score << "\n";
-
-    // Get current timestamp
+    // Timestamp
     auto now = std::chrono::system_clock::now();
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::stringstream timestamp;
     timestamp << std::put_time(std::localtime(&now_c), "%Y-%m-%d %H:%M:%S");
 
-    // Read existing lines
-    std::ifstream fileIn(csvPath);
-    std::vector<std::string> lines;
-    std::string line;
+    // Check if file exists
+    bool fileExists = std::ifstream(csvPath).good();
 
-    // Read header + data
-    bool updated = false;
-    if (fileIn.is_open()) {
-        std::getline(fileIn, line); // header
-        lines.push_back(line);
-        while (std::getline(fileIn, line)) {
-            lines.push_back(line);
-        }
-        fileIn.close();
+    // Open in append mode
+    std::ofstream fileOut(csvPath, std::ios::app);
+    if (!fileOut) {
+        std::cerr << "❌ Failed to open CSV for writing: " << csvPath << "\n";
+        return;
     }
 
-    // Update last row if exists
-    if (lines.size() > 1) {
-        std::stringstream ss(lines.back());
-        std::string field;
-        std::vector<std::string> fields;
-        while (std::getline(ss, field, ',')) fields.push_back(field);
-
-        if (fields.size() >= 6) {
-            fields[0] = timestamp.str(); // update timestamp
-            fields[1] = std::to_string(score); // update trend score
-
-            std::ostringstream updatedLine;
-            for (size_t i = 0; i < fields.size(); ++i) {
-                updatedLine << fields[i];
-                if (i < fields.size() - 1) updatedLine << ",";
-            }
-            lines.back() = updatedLine.str();
-            updated = true;
-        }
+    // Write header if file is new
+    if (!fileExists) {
+        fileOut << "timestamp,trendScore,tweetScore,liquidityRisk,redemptionRisk,bridgeRisk,whaleRisk,uniswapRisk\n";
     }
 
-    // Append if not updated
-    if (!updated) {
-        std::ostringstream newLine;
-        newLine << timestamp.str() << "," << score << ",0.0,0.0,0.0,0.0";
-        lines.push_back(newLine.str());
-    }
+    // Append new row
+    fileOut << timestamp.str() << "," << score
+            << ",0.0,0.0,0.0,0.0,0.0,0.0\n";
 
-    // Write everything back
-    std::ofstream fileOut("/Users/vighneshms/Downloads/SBT/src/model_scores.csv", std::ios::app);
-    for (const auto& l : lines) fileOut << l << "\n";
-
-    std::cout << "📈 [Historical] Updated trend risk score = " << score << " at " << timestamp.str() << "\n";
+    std::cout << "📈 [Historical] Appended trend risk score = " << score << " at " << timestamp.str() << "\n";
 }

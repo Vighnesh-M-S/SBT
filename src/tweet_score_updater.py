@@ -6,9 +6,9 @@ import os
 from datetime import datetime
 import time
 
-TWEET_FILE = "usdc_tweets.txt"
-MODEL_PATH = "tweet_risk_model.pkl"
-CSV_PATH = "model_scores.csv"
+TWEET_FILE = "/Users/vighneshms/Downloads/SBT/src/usdc_tweets.txt"
+MODEL_PATH = "/Users/vighneshms/Downloads/SBT/src/tweet_risk_model.pkl"
+CSV_PATH = "/Users/vighneshms/Downloads/SBT/src/model_scores.csv"
 
 def clean_text(text):
     text = re.sub(r"http\S+", "", text)
@@ -22,8 +22,8 @@ def update_tweet_score():
         print("⚠️ Tweet file not found.")
         exit()
 
-    with open(TWEET_FILE, "r") as f:
-        tweets = [line.strip() for line in f if line.strip()]
+    with open(TWEET_FILE, "r") as fi:
+        tweets = [line.strip() for line in fi if line.strip()]
 
     if not tweets:
         print("ℹ️ No tweets to analyze.")
@@ -67,6 +67,7 @@ def update_tweet_score():
     print(f"✅ Tweet risk score ({avg_score:.4f}) added to {CSV_PATH}")
 
 if __name__ == "__main__":
-    while True:
-        update_tweet_score()
-        time.sleep(60)
+    update_tweet_score()
+
+
+

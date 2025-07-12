@@ -26,6 +26,7 @@ add_executable(stablecoin_tracker
     src/BridgeClient.cpp
     src/RiskLogger.cpp
     src/TwitterLogger.cpp
+    src/DepegPredictor.cpp
 )
 
 target_include_directories(stablecoin_tracker PRIVATE src/include)

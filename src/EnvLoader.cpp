@@ -21,8 +21,11 @@ void EnvLoader::loadEnvFile(const std::string& path) {
             std::string value;
             if (std::getline(is_line, value)) {
                 setenv(key.c_str(), value.c_str(), 1);  // 1 = overwrite
-                std::cout << "🔧 Loaded " << key << " from .env\n";
+                // std::cout << "🔧 Loaded " << key << " from .env\n";
             }
+
         }
+        
     }
+    std::cout << "🔧 Loaded .env file\n";
 }

@@ -10,6 +10,7 @@
 #include "test.h"
 #include "BridgeClient.h"
 #include "RiskSnapshot.h"
+#include "DepegPredictor.h"
 #include <iostream>
 #include <thread>
 #include <cstdlib> 
@@ -21,39 +22,66 @@ int main() {
     // fetchUniswapStats();
     // AaveClient::fetchAaveLiquidity();
     // CurveClient::fetchCurveTokens();
-    // TwitterClient client;
+    TwitterClient client;
     // BridgeClient::fetchBridgeEvents();
     // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
 
-    // PriceFeedManager manager;
+    RiskEngine risk(0.995, 0.990);
+
+    HistoricalPriceTracker tracker(60); 
+
+    PriceFeedManager manager;
     // manager.start();
-    // const std::string keyword = "usdc depeg";
-    // const std::string tweetFile = "usdc_tweets.txt";
+    const std::string keyword = "usdc depeg";
+    const std::string tweetFile = "usdc_tweets.txt";
+    const std::string loc = "/Users/vighneshms/Downloads/SBT/src/model_scores.csv";
+    const std::string coin = "usdc";
 
     while (true) {
         // clearTweetFile(tweetFile);
-        // client.fetchRecentSentiment(keyword);
+        
 
-        // std::cout << "⏳ Waiting 1 minute before next fetch...\n";
-        // std::this_thread::sleep_for(std::chrono::minutes(1));
-//         AaveClient client;
-// client.fetchAaveLiquidity();
-// client.updateLiquidityScoreCSV("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
-// CurveClient::fetchCurveTokens();
-// double score = CurveClient::computeCurveRisk();
-// CurveClient::updateCurveScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
-// std::this_thread::sleep_for(std::chrono::minutes(1));
-// BridgeClient::fetchBridgeEvents();
-// double score = BridgeClient::computeBridgeRisk();
-// BridgeClient::updateBridgeScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
-fetchUSDCTransfers();
-std::this_thread::sleep_for(std::chrono::minutes(1));
+        for (int i = 0; i < 6; ++i) {
+                    auto price = manager.getPrice(coin);
+                    if (price.timestamp != 0) {
+                        tracker.addPrice(coin, price.price);
+                    }
+                    std::this_thread::sleep_for(std::chrono::seconds(10));
+                }
+        
+                tracker.updateRiskCSV(coin, loc);
+                std::cout << "🔄 Updated trend score\n";
+        client.fetchRecentSentiment(keyword);
+        int result = std::system("python3 /Users/vighneshms/Downloads/SBT/src/tweet_score_updater.py");
+    if (result != 0) {
+        std::cerr << "❌ Python script failed.\n";
+    } else {
+        std::cout << "✅ Python tweet scoring script completed.\n";
     }
 
+        AaveClient client2;
+        client2.fetchAaveLiquidity();
+        client2.updateLiquidityScoreCSV("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+        CurveClient::fetchCurveTokens();
+        double score = CurveClient::computeCurveRisk();
+        CurveClient::updateCurveScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+        // std::this_thread::sleep_for(std::chrono::minutes(1));
+        BridgeClient::fetchBridgeEvents();
+        double score2 = BridgeClient::computeBridgeRisk();
+        BridgeClient::updateBridgeScoreCSV(score2, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
 
-    // RiskEngine risk(0.995, 0.990);
+        fetchUSDCTransfers();
+        UniswapStats stats = fetchUniswapStats();
+        if (stats.totalVolumeUSD > 0 && stats.poolCount > 0 && stats.txCount > 0) {
+            double score3 = computeUniswapRiskScore(stats.totalVolumeUSD, stats.poolCount, stats.txCount);
+            updateUniswapScoreCSV(score3, loc);
+        }
 
-    // HistoricalPriceTracker tracker(60); 
+    
+        double finalScore = computeDepegRiskScore("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+        std::this_thread::sleep_for(std::chrono::minutes(1));
+        }
+    
 
      
     // fetchUSDCTransfers();   

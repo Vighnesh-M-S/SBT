@@ -1,11 +1,13 @@
 #include "UniswapMonitor.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include <curl/curl.h>
 #include <json/json.h>
 #include <cstdlib>
-#include<sstream>
-
+#include <iomanip>
+#include <algorithm>
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
     size_t totalSize = size * nmemb;
@@ -55,35 +57,108 @@ UniswapStats fetchUniswapStats() {
     Json::Reader reader;
     if (!reader.parse(response, root)) {
         std::cerr << "❌ Failed to parse JSON response from TheGraph.\n";
-        std::cerr << "Raw Response: \n" << response << std::endl;
         return {};
     }
-    std::cout << "Raw TVL JSON: " << response << "\n";
+    // std::cout << "Raw TVL JSON: " << response << "\n";
 
     try {
         const auto& data = root["data"];
-    
         const auto& factories = data["factories"];
+        const auto& bundles = data["bundles"];
+
         if (!factories.isArray() || factories.empty())
             throw std::runtime_error("No factories found");
-    
-        const auto& factory = factories[0];
-        std::string totalVolumeUSD = factory["totalVolumeUSD"].asString();
-        std::string poolCount = factory["poolCount"].asString();
-        std::string txCount = factory["txCount"].asString();
-    
-        const auto& bundles = data["bundles"];
         if (!bundles.isArray() || bundles.empty())
             throw std::runtime_error("No bundles found");
-    
-        std::string ethPriceUSD = bundles[0]["ethPriceUSD"].asString();
-    
-        std::cout << "✅ TVL Response Parsed:\n"
-                  << "Total Volume (USD): " << totalVolumeUSD << "\n"
-                  << "Pool Count: " << poolCount << "\n"
-                  << "Transaction Count: " << txCount << "\n"
-                  << "ETH Price (USD): " << ethPriceUSD << "\n";
+
+        double volume = std::stod(factories[0]["totalVolumeUSD"].asString());
+        int pools = std::stoi(factories[0]["poolCount"].asString());
+        int txs = std::stoi(factories[0]["txCount"].asString());
+
+        std::cout << "✅ TVL Response Parsed.\n";
+
+        double risk = computeUniswapRiskScore(volume, pools, txs);
+        std::cout << "🦄 [Uniswap] Risk score = " << risk << "\n";
+
+        updateUniswapScoreCSV(risk, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
     } catch (const std::exception& e) {
         std::cerr << "❌ Exception while parsing TVL fields: " << e.what() << "\n";
     }
+
+    return {};
+}
+
+double computeUniswapRiskScore(double volumeUSD, int poolCount, int txCount) {
+    const double maxVolume = 2e12;
+    const double maxPools = 50000;
+    const double maxTx = 1e8;
+
+    double volScore = 1.0 - std::min(volumeUSD / maxVolume, 1.0);
+    double poolScore = 1.0 - std::min(poolCount / double(maxPools), 1.0);
+    double txScore = 1.0 - std::min(txCount / double(maxTx), 1.0);
+
+    double risk = 0.5 * volScore + 0.3 * poolScore + 0.2 * txScore;
+    return risk;
+}
+
+void updateUniswapScoreCSV(double score, const std::string& csvPath) {
+    std::ifstream in(csvPath);
+if (!in) {
+    std::cerr << "❌ Failed to open CSV file: " << csvPath << "\n";
+    return;
+}
+
+std::vector<std::string> lines;
+std::string line;
+while (std::getline(in, line)) {
+    lines.push_back(line);
+}
+in.close();
+
+if (lines.size() < 2) {
+    std::cerr << "⚠️ Not enough rows in CSV to update.\n";
+    return;
+}
+
+std::stringstream scoreStream;
+scoreStream << std::fixed << std::setprecision(6) << score;
+
+std::string& lastLine = lines.back();
+std::stringstream ss(lastLine);
+std::string item;
+std::vector<std::string> cols;
+
+// Split line into columns
+while (std::getline(ss, item, ',')) {
+    cols.push_back(item);
+}
+
+// Ensure at least 8 columns
+while (cols.size() < 8) {
+    cols.push_back("0.0");
+}
+
+// Replace the 8th column (index 7)
+cols[7] = scoreStream.str();
+
+// Rebuild the last line
+std::ostringstream rebuiltLine;
+for (size_t i = 0; i < cols.size(); ++i) {
+    if (i > 0) rebuiltLine << ",";
+    rebuiltLine << cols[i];
+}
+lastLine = rebuiltLine.str();
+
+std::ofstream out(csvPath);
+if (!out) {
+    std::cerr << "❌ Failed to write to CSV file: " << csvPath << "\n";
+    return;
+}
+
+for (const auto& l : lines) {
+    out << l << "\n";
+}
+out.close();
+
+std::cout << "📈 [Uniswap] ✅ uniswapRisk updated to " << scoreStream.str() << "\n";
 }

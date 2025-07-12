@@ -201,6 +201,30 @@ src/CurveClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/CurveClient.cpp.s
 .PHONY : src/CurveClient.cpp.s
 
+src/DepegPredictor.o: src/DepegPredictor.cpp.o
+.PHONY : src/DepegPredictor.o
+
+# target to build an object file
+src/DepegPredictor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.o
+.PHONY : src/DepegPredictor.cpp.o
+
+src/DepegPredictor.i: src/DepegPredictor.cpp.i
+.PHONY : src/DepegPredictor.i
+
+# target to preprocess a source file
+src/DepegPredictor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.i
+.PHONY : src/DepegPredictor.cpp.i
+
+src/DepegPredictor.s: src/DepegPredictor.cpp.s
+.PHONY : src/DepegPredictor.s
+
+# target to generate assembly for a file
+src/DepegPredictor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stablecoin_tracker.dir/build.make CMakeFiles/stablecoin_tracker.dir/src/DepegPredictor.cpp.s
+.PHONY : src/DepegPredictor.cpp.s
+
 src/EnvLoader.o: src/EnvLoader.cpp.o
 .PHONY : src/EnvLoader.o
 
@@ -483,6 +507,9 @@ help:
 	@echo "... src/CurveClient.o"
 	@echo "... src/CurveClient.i"
 	@echo "... src/CurveClient.s"
+	@echo "... src/DepegPredictor.o"
+	@echo "... src/DepegPredictor.i"
+	@echo "... src/DepegPredictor.s"
 	@echo "... src/EnvLoader.o"
 	@echo "... src/EnvLoader.i"
 	@echo "... src/EnvLoader.s"

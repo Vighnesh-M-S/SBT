@@ -39,7 +39,7 @@ void PriceFeedManager::fetchPricesLoop() {
         curl_easy_cleanup(curl);
 
         if (res == CURLE_OK) {
-            std::cout << "Raw JSON: " << readBuffer << std::endl;
+            // std::cout << "Raw JSON: " << readBuffer << std::endl;
 
             Json::Reader reader;
             Json::Value root;
