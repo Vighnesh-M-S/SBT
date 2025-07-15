@@ -20,7 +20,7 @@ _Describe key components such as data collectors (Etherscan, Aave, Uniswap, Curv
 - Full pipeline prediction runs in Y seconds
 
 ## Video Explanation
-[![Watch the demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=_mxW4ZeOwTk)
+[![Watch the demo](./screenshots/thumbnail.png)](https://www.youtube.com/watch?v=_mxW4ZeOwTk)
 
 
 ## 2. Code Documentation
