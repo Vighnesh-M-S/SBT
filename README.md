@@ -20,7 +20,7 @@ _Describe key components such as data collectors (Etherscan, Aave, Uniswap, Curv
 - Full pipeline prediction runs in Y seconds
 
 ## Video Explanation
-![ Explanation ](./videos/Vighnesh_SBT_Walkthrough2.mp4) 
+![ Explanation ](https://youtu.be/_mxW4ZeOwTk) 
 
 
 ## 2. Code Documentation
