@@ -59,7 +59,6 @@ UniswapStats fetchUniswapStats() {
         std::cerr << "❌ Failed to parse JSON response from TheGraph.\n";
         return {};
     }
-    // std::cout << "Raw TVL JSON: " << response << "\n";
 
     try {
         const auto& data = root["data"];
@@ -75,10 +74,7 @@ UniswapStats fetchUniswapStats() {
         int pools = std::stoi(factories[0]["poolCount"].asString());
         int txs = std::stoi(factories[0]["txCount"].asString());
 
-        // std::cout << "✅ TVL Response Parsed.\n";
-
         double risk = computeUniswapRiskScore(volume, pools, txs);
-        // std::cout << "🦄 [Uniswap] Risk score = " << risk << "\n";
 
         updateUniswapScoreCSV(risk, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
     } catch (const std::exception& e) {
@@ -159,6 +155,4 @@ for (const auto& l : lines) {
     out << l << "\n";
 }
 out.close();
-
-// std::cout << "📈 [Uniswap] ✅ uniswapRisk updated to " << scoreStream.str() << "\n";
 }

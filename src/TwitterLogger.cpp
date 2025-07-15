@@ -16,6 +16,4 @@ void TwitterLogger::logTweets(const std::vector<std::string>& tweets) {
     for (const auto& tweet : tweets) {
         file << tweet << "\n";
     }
-
-    // std::cout << "✅ Logged " << tweets.size() << " tweets to " << filename_ << "\n";
 }

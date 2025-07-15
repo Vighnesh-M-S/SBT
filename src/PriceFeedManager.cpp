@@ -4,7 +4,7 @@
 #include <chrono>
 #include <curl/curl.h>
 #include <json/json.h>
-#include <iostream> // ✅ Needed for std::cout and std::cerr
+#include <iostream> 
 
 // Callback function to write the API response into a string
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output) {
@@ -39,7 +39,6 @@ void PriceFeedManager::fetchPricesLoop() {
         curl_easy_cleanup(curl);
 
         if (res == CURLE_OK) {
-            // std::cout << "Raw JSON: " << readBuffer << std::endl;
 
             Json::Reader reader;
             Json::Value root;
@@ -55,9 +54,6 @@ void PriceFeedManager::fetchPricesLoop() {
                     if (root.isMember(id) && root[id].isMember("usd")) {
                         double price = root[id]["usd"].asDouble();
                         prices_[symbol] = { price, now };}
-                    // } else {
-                    //     std::cerr << "⚠️  Missing data for " << id << std::endl;
-                    // }
                 }
             } else {
                 std::cerr << "❌ JSON parse error\n";

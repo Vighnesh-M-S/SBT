@@ -19,13 +19,9 @@
 
 int main() {
     EnvLoader::loadEnvFile("../.env");
-    // checkApiKey();
-    // fetchUniswapStats();
-    // AaveClient::fetchAaveLiquidity();
-    // CurveClient::fetchCurveTokens();
+    
     TwitterClient client;
-    // BridgeClient::fetchBridgeEvents();
-    // std::vector<std::string> coins = {"usdc", "usdt", "dai", "frax", "busd"};
+    
 
     RiskEngine risk(0.995, 0.990);
 
@@ -45,13 +41,12 @@ int main() {
     }
 
     while (true) {
-        // clearTweetFile(tweetFile);
-        // showDashboard(loc, manager, finalScore);
+        
         
 
         for (int i = 0; i < 6; ++i) {
                     auto price = manager.getPrice(coin);
-                    // std::cout << "💱 " << coin << " price: " << price.price << "\n";
+                    
                     if (price.timestamp != 0) {
                         tracker.addPrice(coin, price.price);
                     }
@@ -59,14 +54,10 @@ int main() {
                 }
         
                 tracker.updateRiskCSV(coin, loc);
-                // std::cout << "🔄 Updated trend score\n";
+                
         client.fetchRecentSentiment(keyword);
         int result = std::system("python3 /Users/vighneshms/Downloads/SBT/src/tweet_score_updater.py");
-    // if (result != 0) {
-    //     std::cerr << "❌ Python script failed.\n";
-    // } else {
-    //     std::cout << "✅ Python tweet scoring script completed.\n";
-    // }
+
 
         AaveClient client2;
         client2.fetchAaveLiquidity();
@@ -74,7 +65,7 @@ int main() {
         CurveClient::fetchCurveTokens();
         double score = CurveClient::computeCurveRisk();
         CurveClient::updateCurveScoreCSV(score, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
-        // std::this_thread::sleep_for(std::chrono::minutes(1));
+        
         BridgeClient::fetchBridgeEvents();
         double score2 = BridgeClient::computeBridgeRisk();
         BridgeClient::updateBridgeScoreCSV(score2, "/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
@@ -87,38 +78,12 @@ int main() {
         }
 
     
-        // double finalScore = computeDepegRiskScore("/Users/vighneshms/Downloads/SBT/src/model_scores.csv");
+        
         std::this_thread::sleep_for(std::chrono::minutes(1));
 
         
         }
         
-
-    
-
-     
-    // fetchUSDCTransfers();   
-    // std::vector<RiskSnapshot> allSnapshots;
-
-    
-        // HistoricalPriceTracker tracker(6);  // Track last 10 minutes (60 x 10s)
-        // std::string coin = "usdc";
-    
-        // Initial warmup: collect 10 mins worth of data
-        
-        // while (true) {
-        //     for (int i = 0; i < 6; ++i) {
-        //         auto price = manager.getPrice(coin);
-        //         if (price.timestamp != 0) {
-        //             tracker.addPrice(coin, price.price);
-        //         }
-        //         std::this_thread::sleep_for(std::chrono::seconds(10));
-        //     }
-    
-        //     tracker.updateRiskCSV(coin, "model_scores.csv");
-        //     std::cout << "🔄 Updated trend score\n";
-        // }
-    
         return 0;
     }
     

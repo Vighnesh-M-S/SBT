@@ -62,7 +62,6 @@ void AaveClient::fetchAaveLiquidity() {
                 double liquidity = std::stod(reserve["availableLiquidity"].asString());
                 totalAvailableLiquidity_ += liquidity;
             }
-            // std::cout << "💧 Total Aave Available Liquidity = " << totalAvailableLiquidity_ << "\n";
         } else {
             std::cerr << "❌ Failed to parse TheGraph response\n";
         }
@@ -73,7 +72,6 @@ double AaveClient::computeLiquidityRisk() const {
     // Assume higher risk if liquidity is very low
     if (totalAvailableLiquidity_ == 0.0) return 1.0;
     double risk = 1.0 / (1.0 + totalAvailableLiquidity_ / 1e8);
-    // std::cout << "⚠️ [Aave] Computed liquidity risk score = " << risk << "\n";
     return risk;
 }
 
@@ -135,7 +133,6 @@ void AaveClient::updateLiquidityScoreCSV(const std::string& csvPath) const {
             out << l << "\n";
         }
 
-        // std::cout << "📈 [Aave] ✅ liquidityRisk updated to " << score << " in " << csvPath << "\n";
     } else {
         std::cerr << "❌ Unexpected CSV format (expected >=6 columns)\n";
     }

@@ -86,7 +86,6 @@ void HistoricalPriceTracker::updateRiskCSV(const std::string& coin, const std::s
         return;
     }
 
-    // Write header if file is new
     if (!fileExists) {
         fileOut << "timestamp,trendScore,tweetScore,liquidityRisk,redemptionRisk,bridgeRisk,whaleRisk,uniswapRisk\n";
     }
@@ -94,6 +93,4 @@ void HistoricalPriceTracker::updateRiskCSV(const std::string& coin, const std::s
     // Append new row
     fileOut << timestamp.str() << "," << score
             << ",0.0,0.0,0.0,0.0,0.0,0.0\n";
-
-    // std::cout << "📈 [Historical] Appended trend risk score = " << score << " at " << timestamp.str() << "\n";
 }

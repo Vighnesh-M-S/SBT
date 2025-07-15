@@ -77,14 +77,12 @@ void fetchUSDCTransfers() {
                 }
             }
 
-            // std::cout << "💸 Large USDC Transfers: " << largeTransfers.size() << "\n";
 
             // ---- Compute whaleRiskScore ----
             double rawScore = largeTransfers.size();
             double risk = std::min(1.0, rawScore / 50.0);
             double riskScore = std::min(rawScore / 10.0, 1.0); // Normalize to 0–1
 
-            // std::cout << "🐋 [Etherscan] Whale Risk Score = " << riskScore << "\n";
 
             // ---- Update model_scores.csv ----
             std::string csvPath = "/Users/vighneshms/Downloads/SBT/src/model_scores.csv";
@@ -129,8 +127,6 @@ void fetchUSDCTransfers() {
                     out << l << "\n";
                 }
                 out.close();
-
-                // std::cout << "📈 [Etherscan] ✅ whaleRisk updated to " << scoreStream.str() << "\n";
             }
         } else {
             std::cerr << "❌ Failed to parse Etherscan JSON response.\n";

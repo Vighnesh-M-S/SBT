@@ -51,16 +51,12 @@ void TwitterClient::fetchRecentSentiment(const std::string& keyword) {
         if (reader.parse(response, root)) {
             const auto& tweets = root["data"];
             if (!tweets || tweets.empty()) {
-                // std::cout << "ℹ️ No recent tweets for '" << keyword << "'\n";
                 return;
             }
-
-            // std::cout << "📊 Found " << tweets.size() << " recent tweets mentioning '" << keyword << "'\n";
 
             for (const auto& tweet : tweets) {
                 std::string text = tweet["text"].asString();
                 tweetTexts.push_back(text);
-                // std::cout << "🔹 " << text.substr(0, 80) << "...\n";
             }
 
             // Write fresh batch (overwrites previous)
